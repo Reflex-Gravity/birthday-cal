@@ -40,7 +40,12 @@ function Calendar() {
                 try {
                     const day = new Date(person.birthday).getDay()
                     const bdayYear = new Date(person.birthday).getFullYear()
-                    if ((!isNaN(day) && typeof day === "number") || (year && bdayYear === year)) {
+
+                    if(year && String(bdayYear) !== year) {
+                        return
+                    }
+
+                    if (!isNaN(day) && typeof day === "number" ) {
                         weekData = {
                             ...weekData,
                             [dayOfWeek[day]]: [...this.sortDay([...weekData[dayOfWeek[day]], { ...person }])],
@@ -53,8 +58,76 @@ function Calendar() {
         this.renderApp(weekData)
     }
 
-    this.renderApp = function(weekData) {
-        console.log(weekData)
+    this.renderApp = function (weekData) {
+        let weekEl = ""
+        for (const day in weekData) {
+            if (weekData.hasOwnProperty(day)) {
+                const dayData = weekData[day]
+
+                if (Array.isArray(dayData)) {
+                    weekEl += `<div class="cal__day ${dayData.length === 0 ? "day--empty" : ""}">
+                                    <div class="cal__day_header">${day}</div>
+                                    <div class="cal__day_content">
+                                        ${this.renderBdayCard(dayData)}
+                                    </div>
+                                </div>`
+                }
+            }
+        }
+
+        document.getElementById("weekly").innerHTML = weekEl
+    }
+
+    this.renderBdayCard = function (dayData) {
+        let cardWidth = Math.ceil(Math.sqrt(dayData.length)).toFixed("2")
+        let dayCards = ""
+        dayData.forEach((person) => {
+            dayCards += `<div class="day__person" title='${person.birthday}' style="background-color: ${this.generateColor()}; width: ${parentSquareSide / cardWidth}px; height:${
+                parentSquareSide / cardWidth
+            }px">${this.getInitials(person.name)}</div>`
+        })
+
+        return dayCards
+    }
+
+    /**
+     *  Returns the initials from a string.
+     *
+     * @param {string} [fullName='']
+     * @returns
+     */
+    this.getInitials = function (fullName = "") {
+        if (!fullName) return ""
+
+        fullName = String(fullName)
+
+        if (fullName.indexOf(" ")) {
+            return `${fullName[0]}${fullName[fullName.indexOf(" ") + 1]}`
+        }
+
+        return name[0]
+    }
+
+    /**
+     * Generates random colors.
+     *
+     * @returns
+     */
+    this.generateColor = function () {
+        
+        var lum = -0.25;
+        var hex = String('#' + Math.random().toString(16).slice(2, 8).toUpperCase()).replace(/[^0-9a-f]/gi, '');
+        if (hex.length < 6) {
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        }
+        var rgb = "#",
+            c, i;
+        for (i = 0; i < 3; i++) {
+            c = parseInt(hex.substr(i * 2, 2), 16);
+            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+            rgb += ("00" + c).substr(c.length);
+        }
+        return rgb + 'cc';
     }
 
     this.sortDay = function (dayData) {
