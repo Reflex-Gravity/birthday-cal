@@ -9,14 +9,24 @@
 <body>
     <div id="calendar-app">
         <h1>Work Area</h1>
-        <section class="flex weekly">
+        <section id="weekly" class="flex">
             <div class="cal__day day--empty">
                 <div class="cal__day_header">Mon</div>
                 <div class="cal__day_content"></div>
             </div>
             <div class="cal__day">
                 <div class="cal__day_header">Tue</div>
-                <div class="cal__day_content"></div>
+                <div class="cal__day_content">
+                    <div class="day__person">
+                        AB
+                    </div>
+                    <div class="day__person" style="background-color: red;">
+                        AB
+                    </div>
+                    <div class="day__person" style="background-color: blue;">
+                        AB
+                    </div>
+                </div>
             </div>
             <div class="cal__day">
                 <div class="cal__day_header">Wed</div>
@@ -40,13 +50,43 @@
             </div>
         </section>
         <section class="input-wrapper flex">
-            <textarea name="input_data" id="inputDataField" cols="80" rows="10" placeholder="Input JSON data"></textarea>
+            <textarea name="input_data" id="data_field" cols="80" rows="10" placeholder="Input JSON data with bday in MM/DD/YYYY format">[
+                {
+                  "name": "Joel DSouza",
+                  "birthday": "12/03/1992"
+                },
+                {
+                  "name": "Mark Zuxk",
+                  "birthday": "08/12/2003"
+                },
+                {
+                  "name": "Try La",
+                  "birthday": "23/01/2010"
+                },
+                {
+                  "name": "Fort gmoes",
+                  "birthday": "21/03/1994"
+                },
+                {
+                  "name": "Drake Maker",
+                  "birthday": "19/11/1999"
+                },
+                {
+                  "name": "Uloda Vera",
+                  "birthday": "01/05/1972"
+                },
+                {
+                  "name": "Hillary Clinton",
+                  "birthday": "29/07/1980"
+                }
+              ]</textarea>
             <div class="right-content">
                 <div class="year flex">
                     <label for="year_field">Year</label>
                     <input type="text" name="year" id="year_field"/>
                 </div>
                 <button title="View birthdays" id="update-btn">Update</button>
+                <div id='error-msg'></div>
             </div>
         </section>
     </div>
