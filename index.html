@@ -7,7 +7,49 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    
+    <div id="calendar-app">
+        <h1>Work Area</h1>
+        <section class="flex weekly">
+            <div class="cal__day day--empty">
+                <div class="cal__day_header">Mon</div>
+                <div class="cal__day_content"></div>
+            </div>
+            <div class="cal__day">
+                <div class="cal__day_header">Tue</div>
+                <div class="cal__day_content"></div>
+            </div>
+            <div class="cal__day">
+                <div class="cal__day_header">Wed</div>
+                <div class="cal__day_content"></div>
+            </div>
+            <div class="cal__day">
+                <div class="cal__day_header">Thu</div>
+                <div class="cal__day_content"></div>
+            </div>
+            <div class="cal__day">
+                <div class="cal__day_header">Fri</div>
+                <div class="cal__day_content"></div>
+            </div>
+            <div class="cal__day">
+                <div class="cal__day_header">Sat</div>
+                <div class="cal__day_content"></div>
+            </div>
+            <div class="cal__day">
+                <div class="cal__day_header">Sun</div>
+                <div class="cal__day_content"></div>
+            </div>
+        </section>
+        <section class="input-wrapper flex">
+            <textarea name="input_data" id="inputDataField" cols="80" rows="10" placeholder="Input JSON data"></textarea>
+            <div class="right-content">
+                <div class="year flex">
+                    <label for="year_field">Year</label>
+                    <input type="text" name="year" id="year_field"/>
+                </div>
+                <button title="View birthdays" id="update-btn">Update</button>
+            </div>
+        </section>
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>
