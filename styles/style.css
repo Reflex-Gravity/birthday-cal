@@ -12,6 +12,7 @@ body {
     padding: 30px;
     background-color: #efefef;
     height: 100vh;
+    text-align: center;
 }
 
 #calendar-app h1{
@@ -21,15 +22,19 @@ body {
 
 #weekly{
     margin-top: 50px;
-    justify-content: space-between;
+    display: inline-block;
+    transition: all .3s;
 }
 
 .cal__day {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    float: left;
     min-width: 150px;
     min-height: 180px;
     margin: 5px;
+    border-radius: 3px;
+    overflow: hidden;
+    transition: all .3s;
 }
 
 .cal__day_header{
@@ -42,7 +47,8 @@ body {
 
 .cal__day_content{
     display: inline-block;
-    border: 1px solid rgb(187, 187, 187);
+    border: 1px solid #dbdbdb;
+    border-top: 0;
     height: 160px;
     width: 160px;
     /* box-sizing: border-box; */
@@ -50,7 +56,6 @@ body {
 
 .day__person{
     float: left;
-    padding: 5px;
     color: #fff;
     display: flex;
     box-sizing: border-box;
@@ -67,11 +72,13 @@ body {
 }
 
 .input-wrapper{
+    display: inline-block;
     margin: 5px;
     margin-top: 50px;
 }
 
 .input-wrapper .right-content{
+    float: right;
     margin-left: 30px;
 }
 

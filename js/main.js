@@ -2,26 +2,41 @@ function Calendar() {
     const dayOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
     const WEEK_DATA = { mon: [], tue: [], wed: [], thu: [], fri: [], sat: [], sun: [] }
     const parentSquareSide = 160
+    this.prevRawData = ""
+    this.prevYear = ''
 
     this.init = function () {
         this.registerListeners()
-        this.getValues()
+        this.retrieveValues()
     }
 
     this.registerListeners = function () {
         const btn = document.getElementById("update-btn")
         btn.addEventListener("click", () => {
-            this.getValues()
+            this.retrieveValues()
         })
     }
+    
+    /**
+     * 
+     *
+     */
+    this.retrieveValues = function () {
 
-    this.getValues = function () {
+        // Reset UI
+        this.throwError("")
+        
         const year = document.getElementById("year_field").value
         const rawData = document.getElementById("data_field").value
         let data = []
         try {
             if (rawData) {
                 data = JSON.parse(rawData)
+
+                if(!Array.isArray(data)) {
+                    throw new Error('Array expected')
+                }
+
             } else {
                 data = []
             }
@@ -29,7 +44,13 @@ function Calendar() {
             this.throwError("Input data is invalid!")
         }
 
-        this.calculateData(data, year)
+        // Re-render only if inputs are changed.
+        if (this.prevRawData !== rawData || this.prevYear !== year) {
+            this.prevRawData = rawData
+            this.prevYear = year
+
+            this.calculateData(data, year)
+        }
     }
 
     this.calculateData = function (data, year) {
@@ -41,17 +62,20 @@ function Calendar() {
                     const day = new Date(person.birthday).getDay()
                     const bdayYear = new Date(person.birthday).getFullYear()
 
-                    if(year && String(bdayYear) !== year) {
+                    if (year && String(bdayYear) !== year) {
                         return
                     }
 
-                    if (!isNaN(day) && typeof day === "number" ) {
+                    if (!isNaN(day) && typeof day === "number") {
                         weekData = {
                             ...weekData,
                             [dayOfWeek[day]]: [...this.sortDay([...weekData[dayOfWeek[day]], { ...person }])],
                         }
                     }
-                } catch (er) {}
+                } catch (er) {
+                    console.log(er)
+                    return
+                }
             }
         })
 
@@ -81,6 +105,7 @@ function Calendar() {
     this.renderBdayCard = function (dayData) {
         let cardWidth = Math.ceil(Math.sqrt(dayData.length)).toFixed("2")
         let dayCards = ""
+        
         dayData.forEach((person) => {
             dayCards += `<div class="day__person" title='${person.birthday}' style="background-color: ${this.generateColor()}; width: ${parentSquareSide / cardWidth}px; height:${
                 parentSquareSide / cardWidth
@@ -114,20 +139,20 @@ function Calendar() {
      * @returns
      */
     this.generateColor = function () {
-        
-        var lum = -0.25;
-        var hex = String('#' + Math.random().toString(16).slice(2, 8).toUpperCase()).replace(/[^0-9a-f]/gi, '');
+        var lum = -0.25
+        var hex = String("#" + Math.random().toString(16).slice(2, 8).toUpperCase()).replace(/[^0-9a-f]/gi, "")
         if (hex.length < 6) {
-            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]
         }
         var rgb = "#",
-            c, i;
+            c,
+            i
         for (i = 0; i < 3; i++) {
-            c = parseInt(hex.substr(i * 2, 2), 16);
-            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-            rgb += ("00" + c).substr(c.length);
+            c = parseInt(hex.substr(i * 2, 2), 16)
+            c = Math.round(Math.min(Math.max(0, c + c * lum), 255)).toString(16)
+            rgb += ("00" + c).substr(c.length)
         }
-        return rgb + 'cc';
+        return rgb + "cc"
     }
 
     this.sortDay = function (dayData) {
@@ -141,7 +166,11 @@ function Calendar() {
      */
     this.throwError = function (msg) {
         const errorEl = document.getElementById("error-msg")
-        errorEl.innerText = `Error: ${msg}`
+        if(msg) {
+            errorEl.innerText = `Error: ${msg}`
+        } else {
+            errorEl.innerText = ``
+        }
     }
 }
 
