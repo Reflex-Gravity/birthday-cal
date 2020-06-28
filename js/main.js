@@ -2,6 +2,8 @@ function CalendarApp() {
     const mappedDayOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
     const WEEK_DATA = { mon: [], tue: [], wed: [], thu: [], fri: [], sat: [], sun: [] }
     const parentSquareSide = 160
+    const dateFormats = ['DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/DD/MM', 'YYYY/MM/DD']
+
     this.prevRawData = null
     this.prevRequestedYear = null
 
@@ -65,7 +67,7 @@ function CalendarApp() {
         // Re-render only if inputs are changed.
         if (this.prevRawData !== rawData || this.prevRequestedYear !== requestedYear) {
             this.prevRawData = rawData
-            this.prevRequestedYear = requestedYear
+            this.prevRequestedYear = String(requestedYear)
 
             this.segregateData(data, requestedYear)
         }
@@ -85,11 +87,11 @@ function CalendarApp() {
                 try {
 
                     // Validate the persons bdate
-                    const isDateValid = moment(person.birthday, 'DD/MM/YYYY').isValid()
+                    const isDateValid = moment(person.birthday, dateFormats).isValid()
                     if(!isDateValid) return
 
                     // Set requested year and get the new day of the week.
-                    const bdayOnRequestedYear = moment(person.birthday, 'DD/MM/YYYY').year(requestedYear)
+                    const bdayOnRequestedYear = moment(person.birthday, dateFormats).year(requestedYear)
                     const dayOfWeek = bdayOnRequestedYear.day()
 
                     if (!isNaN(dayOfWeek) && typeof dayOfWeek === "number") {
