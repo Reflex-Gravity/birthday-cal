@@ -28,14 +28,21 @@ function CalendarApp() {
         // Reset errors.
         this.throwError()
         
-        const requestedYear = document.getElementById("year_field").value
+        const yearEl = document.getElementById("year_field")
+        let requestedYear = yearEl.value
         const rawData = document.getElementById("data_field").value
 
         let data = []
 
         // Validates the input data.
+        // Shows empty calendar if data is invalid
         try {
-            // Show default calendar if data is empty
+            // Set current year if year field is empty.
+            if(requestedYear === "") {
+                yearEl.value = new Date().getFullYear()
+                requestedYear = new Date().getFullYear()
+            }
+            
             if (rawData) {
                 data = JSON.parse(rawData)
 
@@ -71,15 +78,12 @@ function CalendarApp() {
         data.forEach((person) => {
 
             // Ignore if person data is valid.
-            if (person && person.name && person.birthday) {
+            if (person && person.name && person.birthday && requestedYear) {
                 try {
-                    const dayOfWeek = new Date(person.birthday).getDay()
-                    const bdayYear = new Date(person.birthday).getFullYear()
-
-                    // Ignore this person if his/her bday year isn't the requested year.
-                    if (requestedYear && String(bdayYear) !== requestedYear) {
-                        return
-                    }
+                    
+                    const bday = new Date(person.birthday)
+                    bday.setFullYear(requestedYear)
+                    const dayOfWeek = bday.getDay()
 
                     if (!isNaN(dayOfWeek) && typeof dayOfWeek === "number") {
                         // Get the name of the day.
