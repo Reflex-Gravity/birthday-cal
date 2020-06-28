@@ -15,7 +15,248 @@
         </section>
         <section class="input-wrapper">
             <form id='cal_form' action="/">
-                <textarea name="input_data" id="data_field" cols="100" rows="10" placeholder="Input JSON data with bday in MM/DD/YYYY format">[{"name":"Spence Mendoza","birthday":"01/17/2006"},{"name":"Shirley Wong","birthday":"06/17/1980"},{"name":"Pate Mcintyre","birthday":"09/06/1996"},{"name":"Blair Gonzalez","birthday":"01/04/1998"},{"name":"Tonia Rowland","birthday":"07/15/1963"},{"name":"Morales Holder","birthday":"06/14/1961"},{"name":"Sawyer Avery","birthday":"09/16/2019"},{"name":"Florence Velasquez","birthday":"09/04/1978"},{"name":"Larsen Parrish","birthday":"01/21/1967"},{"name":"Matthews Whitney","birthday":"06/19/1966"},{"name":"Sellers Day","birthday":"10/24/1960"},{"name":"Ann Gardner","birthday":"03/03/2009"},{"name":"Moore Odom","birthday":"11/23/2016"},{"name":"Vickie Downs","birthday":"12/26/2009"},{"name":"Nolan Stanley","birthday":"09/24/1960"},{"name":"Terri King","birthday":"04/06/1992"},{"name":"Christy Spencer","birthday":"02/19/1991"},{"name":"Alvarez Mclaughlin","birthday":"04/21/1971"},{"name":"Jenna Vaughn","birthday":"07/04/1992"},{"name":"Phyllis Hurst","birthday":"03/24/1962"},{"name":"Mullen Clarke","birthday":"03/02/1982"},{"name":"Helga Beach","birthday":"06/30/2006"},{"name":"Stacey Garrison","birthday":"12/14/1989"},{"name":"Sue Torres","birthday":"06/07/1985"},{"name":"Atkinson Ford","birthday":"05/19/1991"},{"name":"Shana Albert","birthday":"03/02/1998"},{"name":"Heath Petersen","birthday":"03/02/1962"},{"name":"Day Bond","birthday":"07/07/1961"},{"name":"Dyer Arnold","birthday":"04/17/1987"},{"name":"Sabrina Good","birthday":"08/15/2014"},{"name":"Kline Dickerson","birthday":"06/23/1981"},{"name":"Imogene Williams","birthday":"12/07/1997"},{"name":"Trevino French","birthday":"07/04/1984"},{"name":"Pitts Fields","birthday":"11/29/2010"},{"name":"Dona Hickman","birthday":"05/24/1976"},{"name":"Marva Carson","birthday":"03/30/1994"},{"name":"Cassie Burke","birthday":"07/18/1982"},{"name":"Janet Evans","birthday":"04/16/2017"},{"name":"Berta Acevedo","birthday":"08/10/1985"},{"name":"Eve Moody","birthday":"03/06/1976"},{"name":"Tommie Richards","birthday":"07/26/1965"},{"name":"Elvira Cash","birthday":"09/13/2004"},{"name":"Anne Tanner","birthday":"08/31/1979"},{"name":"Sexton Butler","birthday":"06/20/2018"},{"name":"Shannon Becker","birthday":"07/22/1977"},{"name":"Violet Kirk","birthday":"07/09/1981"},{"name":"Nichols Townsend","birthday":"09/05/2014"},{"name":"Judy Padilla","birthday":"04/14/1984"},{"name":"Clay Cervantes","birthday":"04/13/2007"},{"name":"Mia Lee","birthday":"02/25/1965"},{"name":"Kaufman Charles","birthday":"10/02/1974"},{"name":"Martinez Barker","birthday":"03/10/1984"},{"name":"Howell White","birthday":"09/04/2016"},{"name":"Dickson Little","birthday":"07/28/2017"},{"name":"Mercedes Casey","birthday":"12/01/1963"},{"name":"Moreno Nguyen","birthday":"09/04/1964"},{"name":"Kris Walters","birthday":"11/13/1972"},{"name":"Silvia Potts","birthday":"11/07/1960"},{"name":"Sybil Cameron","birthday":"02/27/1995"},{"name":"Tamra Mccoy","birthday":"02/05/2015"},{"name":"Lindsey Cotton","birthday":"01/24/2019"},{"name":"Rocha Wilkins","birthday":"01/07/2018"},{"name":"Willie Hernandez","birthday":"03/26/2014"},{"name":"Hickman Hansen","birthday":"04/17/2018"},{"name":"Gibson Ryan","birthday":"12/08/2019"},{"name":"Leah Wolfe","birthday":"10/13/2014"},{"name":"Gabriela Rhodes","birthday":"07/26/2015"}]</textarea>
+                <textarea name="input_data" id="data_field" cols="100" rows="10" placeholder="Input JSON data with bday in DD/MM/YYYY format">[
+                    {
+                      "name": "Chang Maynard",
+                      "birthday": "14/07/2001"
+                    },
+                    {
+                      "name": "Leanna Rasmussen",
+                      "birthday": "12/10/1998"
+                    },
+                    {
+                      "name": "Madeleine Levine",
+                      "birthday": "18/01/1982"
+                    },
+                    {
+                      "name": "Zimmerman Young",
+                      "birthday": "30/10/1967"
+                    },
+                    {
+                      "name": "Pickett Emerson",
+                      "birthday": "20/10/1976"
+                    },
+                    {
+                      "name": "Susan Warren",
+                      "birthday": "19/11/1978"
+                    },
+                    {
+                      "name": "Cecelia Diaz",
+                      "birthday": "13/10/2005"
+                    },
+                    {
+                      "name": "Beard Lowery",
+                      "birthday": "10/12/2004"
+                    },
+                    {
+                      "name": "Huber Tanner",
+                      "birthday": "13/07/1977"
+                    },
+                    {
+                      "name": "Kim Christian",
+                      "birthday": "26/12/1974"
+                    },
+                    {
+                      "name": "Wooten Bonner",
+                      "birthday": "20/02/1991"
+                    },
+                    {
+                      "name": "Alexandra Walters",
+                      "birthday": "04/11/1981"
+                    },
+                    {
+                      "name": "Rhodes Reid",
+                      "birthday": "25/07/2001"
+                    },
+                    {
+                      "name": "Suzette Ortiz",
+                      "birthday": "01/04/1985"
+                    },
+                    {
+                      "name": "Horne Wooten",
+                      "birthday": "14/05/2015"
+                    },
+                    {
+                      "name": "Janette Rosales",
+                      "birthday": "28/05/2009"
+                    },
+                    {
+                      "name": "Tami Harrison",
+                      "birthday": "04/10/1994"
+                    },
+                    {
+                      "name": "Reyes Drake",
+                      "birthday": "16/06/1973"
+                    },
+                    {
+                      "name": "Bradshaw Rocha",
+                      "birthday": "29/08/2006"
+                    },
+                    {
+                      "name": "Sallie Thompson",
+                      "birthday": "21/06/2011"
+                    },
+                    {
+                      "name": "Lenora Chavez",
+                      "birthday": "23/08/1962"
+                    },
+                    {
+                      "name": "Contreras Villarreal",
+                      "birthday": "13/08/1995"
+                    },
+                    {
+                      "name": "Larson Cardenas",
+                      "birthday": "27/12/2015"
+                    },
+                    {
+                      "name": "Thompson Mcneil",
+                      "birthday": "24/03/1976"
+                    },
+                    {
+                      "name": "Atkinson Morrow",
+                      "birthday": "06/08/1980"
+                    },
+                    {
+                      "name": "Margery Beasley",
+                      "birthday": "16/01/1993"
+                    },
+                    {
+                      "name": "Blackwell Kidd",
+                      "birthday": "20/01/2012"
+                    },
+                    {
+                      "name": "Steele Bradley",
+                      "birthday": "02/11/2015"
+                    },
+                    {
+                      "name": "Bobbie Klein",
+                      "birthday": "19/12/1994"
+                    },
+                    {
+                      "name": "Montgomery Gill",
+                      "birthday": "22/07/1962"
+                    },
+                    {
+                      "name": "Lillie Workman",
+                      "birthday": "28/11/1983"
+                    },
+                    {
+                      "name": "Sullivan Walsh",
+                      "birthday": "16/11/2005"
+                    },
+                    {
+                      "name": "Foster Kim",
+                      "birthday": "10/11/1962"
+                    },
+                    {
+                      "name": "Bethany Mcdowell",
+                      "birthday": "12/12/1970"
+                    },
+                    {
+                      "name": "Graves Vargas",
+                      "birthday": "29/03/2008"
+                    },
+                    {
+                      "name": "Lane Brock",
+                      "birthday": "21/07/1985"
+                    },
+                    {
+                      "name": "Vaughn Meyer",
+                      "birthday": "20/11/1963"
+                    },
+                    {
+                      "name": "Manuela Phelps",
+                      "birthday": "29/10/1962"
+                    },
+                    {
+                      "name": "Watts Carter",
+                      "birthday": "28/11/2018"
+                    },
+                    {
+                      "name": "Pansy Langley",
+                      "birthday": "03/08/2014"
+                    },
+                    {
+                      "name": "Opal Duke",
+                      "birthday": "28/07/1968"
+                    },
+                    {
+                      "name": "Meyer Talley",
+                      "birthday": "04/11/1981"
+                    },
+                    {
+                      "name": "Walls Guerrero",
+                      "birthday": "24/08/2013"
+                    },
+                    {
+                      "name": "Trujillo Knapp",
+                      "birthday": "29/05/2013"
+                    },
+                    {
+                      "name": "Barr Foster",
+                      "birthday": "13/04/2009"
+                    },
+                    {
+                      "name": "Patton Buck",
+                      "birthday": "26/11/1987"
+                    },
+                    {
+                      "name": "Lorraine Morin",
+                      "birthday": "31/07/1968"
+                    },
+                    {
+                      "name": "Allison Riley",
+                      "birthday": "26/01/1974"
+                    },
+                    {
+                      "name": "Barber Conrad",
+                      "birthday": "05/12/2012"
+                    },
+                    {
+                      "name": "Vera Fletcher",
+                      "birthday": "14/06/2013"
+                    },
+                    {
+                      "name": "Meagan Mooney",
+                      "birthday": "03/02/1997"
+                    },
+                    {
+                      "name": "Eileen Mclean",
+                      "birthday": "02/09/2004"
+                    },
+                    {
+                      "name": "Susanna Silva",
+                      "birthday": "19/03/1973"
+                    },
+                    {
+                      "name": "Malone Dale",
+                      "birthday": "22/11/1974"
+                    },
+                    {
+                      "name": "Elnora Parker",
+                      "birthday": "30/09/1985"
+                    },
+                    {
+                      "name": "Nelda Rodgers",
+                      "birthday": "12/12/2010"
+                    },
+                    {
+                      "name": "Melendez Manning",
+                      "birthday": "28/09/2012"
+                    },
+                    {
+                      "name": "Eula Hensley",
+                      "birthday": "23/09/1986"
+                    },
+                    {
+                      "name": "Bernadette Harrington",
+                      "birthday": "08/05/2015"
+                    },
+                    {
+                      "name": "Savage Dillard",
+                      "birthday": "08/05/1981"
+                    }
+                  ]</textarea>
                 <div class="right-content">
                     <div class="year flex">
                         <label for="year_field">Year</label>

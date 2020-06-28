@@ -80,20 +80,19 @@ function CalendarApp() {
         let weekData = {...WEEK_DATA}
 
         data.forEach((person) => {
-
-            // Ignore if person data is valid.
+            
             if (person && person.name && person.birthday && requestedYear) {
                 try {
 
                     // Validate the persons bdate
-                    const isDateValid = moment(person.birthday, 'MM/DD/YYYY').isValid()
+                    const isDateValid = moment(person.birthday, 'DD/MM/YYYY').isValid()
                     if(!isDateValid) return
 
                     // Set requested year and get the new day of the week.
-                    const bday = moment(person.birthday).year(requestedYear)
-                    const dayOfWeek = bday.day()
+                    const bdayOnRequestedYear = moment(person.birthday, 'DD/MM/YYYY').year(requestedYear)
+                    const dayOfWeek = bdayOnRequestedYear.day()
 
-                    if (!isNaN(dayOfWeek) && typeof dayOfWeek === "number" && moment(bday, 'MM/DD/YYYY').isValid()) {
+                    if (!isNaN(dayOfWeek) && typeof dayOfWeek === "number") {
                         // Get the name of the day.
                         const day = mappedDayOfWeek[dayOfWeek]
                         
