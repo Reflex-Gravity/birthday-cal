@@ -150,7 +150,7 @@ textarea{
     }
 
     textarea {
-        width: calc(100vw - 30px);
+        width: calc(100vw - 35px);
     }
     .input-wrapper{
         margin: 0;
@@ -168,6 +168,7 @@ textarea{
         position: fixed;
         bottom: 0;
         left: 0;
+        border-radius: 0;
     }
 
 }
