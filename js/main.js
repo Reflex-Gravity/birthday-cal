@@ -88,7 +88,7 @@ function CalendarApp() {
                 try {
 
                     // Validate the persons bdate, ignore if date isn't valid.
-                    const isDateValid = moment(person.birthday, dateFormats, true).isValid()
+                    const isDateValid = moment(person.birthday, dateFormats).isValid()
                     if(!isDateValid) return
 
                     // Set requested year and get the new day of the week.
