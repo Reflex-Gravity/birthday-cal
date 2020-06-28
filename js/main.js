@@ -119,7 +119,7 @@ function CalendarApp() {
 
                 const isEmpty = Array.isArray(dayData) ? dayData.length === 0 : true
 
-                weekEl += `<div class="cal__day ${isEmpty ? "day--empty" : ""}">
+                weekEl += `<div class="cal__day flex ${isEmpty ? "day--empty" : ""}">
                                 <div class="cal__day_header">${day}</div>
                                 <div class="cal__day_content">
                                     ${this.renderBdayCard(dayData)}
@@ -158,7 +158,7 @@ function CalendarApp() {
 
         dayData.forEach((person) => {
                 const cardStyle = `background-color: ${this.generateColor()}; width: ${cardWidth}px; height:${cardWidth}px; font-size:${fontSize}`
-                
+
                 dayCards += `<div class="day__person" title='${person.name}, on ${person.birthday}' style="${cardStyle}">
                     ${this.getInitials(person.name)}
                 </div>`
