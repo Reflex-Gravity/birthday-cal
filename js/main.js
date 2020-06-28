@@ -26,7 +26,7 @@ function CalendarApp() {
     this.retrieveValues = function () {
         
         // Reset errors.
-        this.throwError("")
+        this.throwError()
         
         const requestedYear = document.getElementById("year_field").value
         const rawData = document.getElementById("data_field").value
@@ -148,16 +148,17 @@ function CalendarApp() {
          * We find the grid size by, rounding upwards the square root of bday count in a day.
          * 
         */
-        const grid = Math.ceil(Math.sqrt(dayData.length))
+        const gridSize = Math.ceil(Math.sqrt(dayData.length))
 
         // The width of each bday card.
-        const cardWidth = parseFloat(parentSquareSide / grid).toFixed('5');
+        const cardWidth = parseFloat(parentSquareSide / gridSize).toFixed('5');
 
-        // Flexible font size after bday cards become less than 25px
+        // Flexible font size after bday cards become less than 25px in width
         const fontSize = cardWidth <= 25 ? `${parseInt(cardWidth/1.8)}px` : 'inherit'
 
         dayData.forEach((person) => {
                 const cardStyle = `background-color: ${this.generateColor()}; width: ${cardWidth}px; height:${cardWidth}px; font-size:${fontSize}`
+                
                 dayCards += `<div class="day__person" title='${person.name}, on ${person.birthday}' style="${cardStyle}">
                     ${this.getInitials(person.name)}
                 </div>`
