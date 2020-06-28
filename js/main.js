@@ -27,6 +27,10 @@ function CalendarApp() {
         
         // Reset errors.
         this.throwError()
+
+        if(!window.moment) {
+            return
+        }
         
         const yearEl = document.getElementById("year_field")
         let requestedYear = yearEl.value
@@ -80,12 +84,16 @@ function CalendarApp() {
             // Ignore if person data is valid.
             if (person && person.name && person.birthday && requestedYear) {
                 try {
-                    
-                    const bday = new Date(person.birthday)
-                    bday.setFullYear(requestedYear)
-                    const dayOfWeek = bday.getDay()
 
-                    if (!isNaN(dayOfWeek) && typeof dayOfWeek === "number") {
+                    // Validate the persons bdate
+                    const isDateValid = moment(person.birthday, 'MM/DD/YYYY').isValid()
+                    if(!isDateValid) return
+
+                    // Set requested year and get the new day of the week.
+                    const bday = moment(person.birthday).year(requestedYear)
+                    const dayOfWeek = bday.day()
+
+                    if (!isNaN(dayOfWeek) && typeof dayOfWeek === "number" && moment(bday, 'MM/DD/YYYY').isValid()) {
                         // Get the name of the day.
                         const day = mappedDayOfWeek[dayOfWeek]
                         

@@ -68,6 +68,7 @@ body {
     display: flex;
     box-sizing: border-box;
     align-items: center;
+    text-transform: uppercase;
     justify-content: center;
     background-color: #333;
 }
