@@ -75,7 +75,8 @@ function CalendarApp() {
 
     /**
      * Segregate the data week-wise and sort it day-wise. 
-     *
+     * @param {Array} data
+     * @param {string} requestedYear
      */
     this.segregateData = function (data, requestedYear) {
         
@@ -86,8 +87,8 @@ function CalendarApp() {
             if (person && person.name && person.birthday && requestedYear) {
                 try {
 
-                    // Validate the persons bdate
-                    const isDateValid = moment(person.birthday, dateFormats).isValid()
+                    // Validate the persons bdate, ignore if date isn't valid.
+                    const isDateValid = moment(person.birthday, dateFormats, true).isValid()
                     if(!isDateValid) return
 
                     // Set requested year and get the new day of the week.
