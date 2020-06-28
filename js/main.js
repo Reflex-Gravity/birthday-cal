@@ -11,10 +11,6 @@ function CalendarApp() {
     }
 
     this.registerListeners = function () {
-        const btn = document.getElementById("update-btn")
-        btn.addEventListener("click", () => {
-            this.retrieveValues()
-        })
 
         const calForm = document.getElementById('cal_form')
         calForm.addEventListener('submit', evt => {
@@ -121,23 +117,14 @@ function CalendarApp() {
             if (weekData.hasOwnProperty(day)) {
                 const dayData = weekData[day]
 
-                if (Array.isArray(dayData)) {
-                    weekEl += `<div class="cal__day ${dayData.length === 0 ? "day--empty" : ""}">
-                                    <div class="cal__day_header">${day}</div>
-                                    <div class="cal__day_content">
-                                        ${this.renderBdayCard(dayData)}
-                                    </div>
-                                </div>`
-                } else {
-                    // If there's a problem with data, show an empty day.
-                    weekEl += `<div class="cal__day day--empty">
-                                    <div class="cal__day_header">
-                                        ${day}
-                                    </div>
-                                    <div class="cal__day_content">
-                                    </div>
-                                </div>`
-                }
+                const isEmpty = Array.isArray(dayData) ? dayData.length === 0 : true
+
+                weekEl += `<div class="cal__day ${isEmpty ? "day--empty" : ""}">
+                                <div class="cal__day_header">${day}</div>
+                                <div class="cal__day_content">
+                                    ${this.renderBdayCard(dayData)}
+                                </div>
+                            </div>`
             }
         }
 
@@ -151,6 +138,9 @@ function CalendarApp() {
      * @returns
      */
     this.renderBdayCard = function (dayData) {
+
+        if (!Array.isArray(dayData)) return ''
+
         let dayCards = ""
 
         /** 
@@ -167,7 +157,8 @@ function CalendarApp() {
         const fontSize = cardWidth <= 25 ? `${parseInt(cardWidth/1.8)}px` : 'inherit'
 
         dayData.forEach((person) => {
-                dayCards += `<div class="day__person" title='${person.name}, on ${person.birthday}' style="background-color: ${this.generateColor()}; width: ${cardWidth}px; height:${cardWidth}px; font-size:${fontSize}">
+                const cardStyle = `background-color: ${this.generateColor()}; width: ${cardWidth}px; height:${cardWidth}px; font-size:${fontSize}`
+                dayCards += `<div class="day__person" title='${person.name}, on ${person.birthday}' style="${cardStyle}">
                     ${this.getInitials(person.name)}
                 </div>`
         })
