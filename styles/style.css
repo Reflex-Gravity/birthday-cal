@@ -41,6 +41,8 @@ body {
     min-height: 180px;
     margin: 5px;
     border-radius: 3px;
+    border: 1px solid rgba(171, 160, 236, 0.27);
+    border-top: 0;
     overflow: hidden;
     transition: all .3s;
 }
@@ -55,8 +57,6 @@ body {
 
 .cal__day_content{
     display: inline-block;
-    border: 1px solid #dbdbdb;
-    border-top: 0;
     height: 160px;
     width: 160px;
     /* box-sizing: border-box; */
