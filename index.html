@@ -6,22 +6,24 @@
     <title>Birthday Cal</title>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-<body>
+<body class="flex">
     <div id="calendar-app">
         <h1>Work Area</h1>
         <section id="weekly">
             
         </section>
         <section class="input-wrapper">
-            <textarea name="input_data" id="data_field" cols="80" rows="10" placeholder="Input JSON data with bday in MM/DD/YYYY format"></textarea>
-            <div class="right-content">
-                <div class="year flex">
-                    <label for="year_field">Year</label>
-                    <input type="text" name="year" id="year_field"/>
+            <form id='cal_form' action="/">
+                <textarea name="input_data" id="data_field" cols="80" rows="10" placeholder="Input JSON data with bday in MM/DD/YYYY format"></textarea>
+                <div class="right-content">
+                    <div class="year flex">
+                        <label for="year_field">Year</label>
+                        <input type="number" name="year" id="year_field"/>
+                    </div>
+                    <button type="submit" title="View birthdays" id="update-btn">Update</button>
+                    <div id='error-msg'></div>
                 </div>
-                <button title="View birthdays" id="update-btn">Update</button>
-                <div id='error-msg'></div>
-            </div>
+            </form>
         </section>
     </div>
     <script src="./js/main.js"></script>
