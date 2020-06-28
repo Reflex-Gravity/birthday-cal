@@ -2,4 +2,4 @@
 
 A week-wise calendar displaying birthdays.
 
-![Screenshot](https://imgur.com/a/l0BMDOq)
+![Screenshot](https://i.imgur.com/7nwbrYX.png)
